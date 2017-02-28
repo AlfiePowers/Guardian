@@ -62,6 +62,7 @@ public class Main {
         commands.put("commands", new CommandList());
         commands.put("banned", new BannedCommand());
         commands.put("profile", new ProfileInfo());
+        commands.put("leave", new LeaveCommand());
         //manager = jda.getSelfUser().getManager();
         //Start the Set-up
         new Thread(() -> {

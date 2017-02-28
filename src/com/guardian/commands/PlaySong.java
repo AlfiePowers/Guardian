@@ -101,7 +101,7 @@ public class PlaySong extends ListenerAdapter implements Command {
 
     private void play(Guild guild, GuildMusicManager musicManager, AudioTrack track) {
         try {
-            connectToFirstVoiceChannel(guild.getAudioManager());
+            connectToFirstVoiceChannel(guild, guild.getAudioManager());
             musicManager.scheduler.queue(track);
         }catch (Exception e){
             location.getTextChannel().sendMessage("Failed to Play " + track.getInfo() + ": Song URL Invalid").queue();
@@ -109,7 +109,7 @@ public class PlaySong extends ListenerAdapter implements Command {
 
     }
 
-    private static void connectToFirstVoiceChannel(AudioManager audioManager) {
+    private static void connectToFirstVoiceChannel(Guild guild, AudioManager audioManager) {
         if (!audioManager.isConnected() && !audioManager.isAttemptingToConnect()) {
             for (VoiceChannel voiceChannel : audioManager.getGuild().getVoiceChannels()) {
                 audioManager.openAudioConnection(voiceChannel);
@@ -118,11 +118,10 @@ public class PlaySong extends ListenerAdapter implements Command {
         }
     }
 
-    private static void disconnectFromVoiceChannel(AudioManager audioManager) {
-        System.out.println("Disconnecting");
-        if (audioManager.isConnected()) {
+    public static void disconnectFromVoiceChannel(AudioManager audioManager, MessageReceivedEvent event) {
+        if(audioManager.isConnected()){
+            System.out.println("Disconnecting from " + event.getGuild().getName());
             audioManager.closeAudioConnection();
-            musicManager.scheduler.nextTrack();
         }
     }
 

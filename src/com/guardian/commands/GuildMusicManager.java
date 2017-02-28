@@ -2,6 +2,7 @@ package com.guardian.commands;
 
 import com.sedmelluq.discord.lavaplayer.player.AudioPlayer;
 import com.sedmelluq.discord.lavaplayer.player.AudioPlayerManager;
+import com.sedmelluq.discord.lavaplayer.track.AudioTrackEndReason;
 
 /**
  * Holder for both the player and a track scheduler for one guild.
@@ -10,7 +11,7 @@ public class GuildMusicManager {
     /**
      * Audio player for the guild.
      */
-    public final AudioPlayer player;
+    public static AudioPlayer player;
     /**
      * Track scheduler for the player.
      */

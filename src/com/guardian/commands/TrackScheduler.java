@@ -1,10 +1,13 @@
 package com.guardian.commands;
 
+import com.guardian.util.SetBotGame;
 import com.sedmelluq.discord.lavaplayer.player.AudioPlayer;
 import com.sedmelluq.discord.lavaplayer.player.event.AudioEventAdapter;
 import com.sedmelluq.discord.lavaplayer.track.AudioTrack;
 import com.sedmelluq.discord.lavaplayer.track.AudioTrackEndReason;
+import net.dv8tion.jda.core.entities.Guild;
 
+import java.io.IOException;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.LinkedBlockingQueue;
 
@@ -52,5 +55,21 @@ public class TrackScheduler extends AudioEventAdapter {
         if (endReason.mayStartNext) {
             nextTrack();
         }
+        /*
+        new Thread(() -> {
+            try {
+                while (true) {
+                    Thread.sleep(1000);
+                    System.out.println(track.getState());
+                    if (track.getState().equals("FINISHED")) {
+                        System.out.println("Disconnecting");
+                    }
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }).start();
+        */
     }
+
 }

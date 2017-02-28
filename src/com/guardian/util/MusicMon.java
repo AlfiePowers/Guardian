@@ -1,7 +1,9 @@
 package com.guardian.util;
 
+import com.guardian.commands.GuildMusicManager;
 import com.guardian.commands.PlaySong;
 import com.guardian.commands.TrackScheduler;
+import net.dv8tion.jda.core.managers.AudioManager;
 
 public class MusicMon {
 
@@ -10,22 +12,8 @@ public class MusicMon {
     }
 
     public void songStatus() {
-        /*
 
-        while (true) {
-            try {
-                Thread.sleep(5000);
-                if(TrackScheduler.queue.isEmpty() == true){
 
-                }
-
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-
-            }
-        }
-        */
     }
 }
 
